@@ -11,7 +11,9 @@ import { PostsService } from '../services/posts.service';
 import { createPostDto } from '../dto/create-post.dto';
 import { PostEntity } from '../entities/post.entity';
 import { updatePostDto } from '../dto/update-post.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Posts')
 @Controller('posts')
 export class PostsController {
   constructor(private postService: PostsService) {}

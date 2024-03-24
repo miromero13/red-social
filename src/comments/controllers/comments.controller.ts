@@ -11,7 +11,10 @@ import { CommentsService } from '../services/comments.service';
 import { createCommentDto } from '../dto/create-comment.dto';
 import { CommentEntity } from '../entities/comment.entity';
 import { updatePostDto } from 'src/posts/dto/update-post.dto';
+import { ApiTags } from '@nestjs/swagger';
+import { updateCommentDto } from '../dto/update-comment.dto';
 
+@ApiTags('Comments')
 @Controller('comments')
 export class CommentsController {
   constructor(private commentService: CommentsService) {}
@@ -42,7 +45,7 @@ export class CommentsController {
 
   @Patch(':commentId')
   updateComment(
-    @Body() updateComment: updatePostDto,
+    @Body() updateComment: updateCommentDto,
     @Param('commentId') commentId: string,
   ) {
     return this.commentService.updateComment(commentId, updateComment);
